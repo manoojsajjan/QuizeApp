@@ -37,7 +37,7 @@ export default function HomePage() {
 
   const valid = name.trim().length >= 2 && agree;
 
-  function handleStart(e) {
+  function handleStart(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setTouched(true);
     if (!valid) return;

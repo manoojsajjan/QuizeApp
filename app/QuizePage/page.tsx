@@ -78,7 +78,7 @@ export default function QuizQuestionsPage() {
 
         {/* Options */}
         <div className="space-y-4">
-          {q.options.map((op, i) => (
+          {q.options.map((op:string, i:number) => (
             <button
               key={i}
               onClick={() => setSelected(op)}

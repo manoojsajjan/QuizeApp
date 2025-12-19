@@ -2,6 +2,7 @@
 const { createContext, useState, useEffect } = require("react");
 import { easyQuestion } from '../easyQuestions'
 import { hardQuestions } from '../hardQuestions';
+import Cookies from 'js-cookie'
 
 export const QuizeContext = createContext();
 
@@ -16,12 +17,13 @@ const QuizeContextProvider = ({ children }) => {
     const [chances, setChances] = useState(3);
     const [score, setScore] = useState(0);
     const [correctCount, setCorrectCount] = useState(0);
-    let checkingDiff=localStorage.getItem("difficulty")
-    const [questionsMethod,setQuestionsMethod]=useState(checkingDiff==="easy" ? easyQuestion : hardQuestions);
+    let checkingDiff=Cookies.get("difficulty")
+    const [questionsMethod,setQuestionsMethod]=useState(checkingDiff==="easy" ? easyQuestion : hardQuestions)
 
     const nameSetting = (name, difficulty) => {
         localStorage.setItem("name", name);
         localStorage.setItem("difficulty", difficulty);
+        Cookies.set("difficulty",difficulty);
     }
 
     const gettingData = () => {
